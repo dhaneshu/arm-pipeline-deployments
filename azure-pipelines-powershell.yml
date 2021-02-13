@@ -1,0 +1,38 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build_infra and deploy your code.
+# Add steps that build_infra, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+    # Deployment Resource Group Name
+    rg_name: $(RG Name to deploy)
+    
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: CopyFiles@2
+  displayName: Copy files
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'apt-sandpit'
+    subscriptionId: '09063c76-8a3d-40ed-a277-f64e1cc38d84'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: $(rg_name)
+    location: 'North Europe'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(Build.ArtifactStagingDirectory)/complete-build_infra.json'
+    csmParametersFile: '$(Build.ArtifactStagingDirectory)/complete-build_infra.parameters.json'
+    deploymentMode: 'Incremental'

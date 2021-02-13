@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+        "value": "myorglinuxvm"
+    },
+    "adminUsername": {
+      "value": "osadmin"
+    },
+    "adminPasswordOrKey": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzv07DIf1eY1sip/QVT2kIBeK3qbJC5bzjrhWjpR92BrRu0KUFU5vx7NEG3XbTk0LoDlTSOSOdZJCsIzGMkggua/CEAWO8fL5RtF6XyS9Yh4AmSb5NcojpcPf83UCO4j8D3hBGQwxqTL5FDrTqsDhwj1c40G/dpcFf5zaCnHNEb/c9g7AaarT2HgY674Du1XZEgUmCtvowBC3XZ4hATHNAdX9vNnMXeVHNXSg/7E+w90Yc+i9ZXTq6RBmCdqKI3+VsvlX8+uHvyjSZRe27fBdM1EWW2qTuG+kP9whiPcmZ9sf8nIEbi60TeqtHl/7Mg2GX8EE9NMBsKjqSQd/u2VXZ dhanesh.u@DESK"
+    },
+    "authenticationType": {
+      "value": "sshPublicKey"
+    },
+    "storageAccountName": {
+        "value": "strgmyorg"
+    },
+    "containerName": {
+        "value": "myblob"
+    }
+  }
+}
